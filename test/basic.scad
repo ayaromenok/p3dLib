@@ -6,8 +6,8 @@ yCube(szx=5, px=10);
 yPoly(p=[[-3,0], [3,0], [1,3]], py=-5);
 ySec(r=7);
 yArc(r=10);
-yCyl(rb=4, rt=3, px=-10, pz=-2, ry=30);
-yCyl2(rb=4, rt=3, px=-15, pz=-2, ry=30);
+yCyl(rb=2, rt=1.5, px=-10, pz=-2, ry=30);
+yCyl2(rb=2, rt=1.5, px=-15, pz=-2, ry=30);
 ySphere(r=1, py=-10, ry=30);
 
 //longeron();
