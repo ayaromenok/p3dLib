@@ -11,7 +11,7 @@
 //mx - Mirror X
 //szx - SiZe X
 module yVersion(){
-    echo("\n\n\t version: 0.1.20200127\n\n");
+    echo("\n\n\t version: 0.1.1.20200211\n\n");
 }
 module yCube(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, szx=1, szy=1, szz=1, clr = "grey") {
     mirror([mx,my,mz])
