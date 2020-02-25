@@ -97,7 +97,7 @@ module yArc(r=5, a=[45,135], w=1, szz=1, fn=($preview ? 3:10), px=0, py=0, pz=0,
     color(clr)
         difference(){
             ySec(r=r+w, a=a, szz=szz, fn=fn);
-            ySec(r=(r), a=a, szz=(szz+2), pz=-1, fn=fn);
+            ySec(r=(r), a=[a[0]-0.1, a[1]+0.1], szz=(szz+2), pz=-1, fn=fn);
         }//diff
 }
 
