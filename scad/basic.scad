@@ -31,19 +31,28 @@ module ySphere(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0,
         sphere( r, $fn=fn*((r>2)?r:2));    
 }//yCube
 
+//r - one radius
 //rb - Radius Bottom, 
 //rt - Radius Top
-module yCyl(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, rb=1, rt=1, szz=1, clr = "grey", fn = ($preview ? 2:8) ) {
+module yCyl(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, r=0, rb=1, rt=1, szz=1, clr = "grey", fn = ($preview ? 2:8) ) {
+    
+    rb = (r!=0)?r:rb;
+    rt = (r!=0)?r:rt;
     _r = (rb>rt)?rb:rt;
+    
+    echo (r,rb,rt);
     mirror([mx,my,mz])
     translate([px, py, (pz-szz/2)])
     rotate([rx,ry,rz])
     scale([sx,sy,sz])
     color(clr)
-        cylinder(szz, rb, rt, $fn=fn*((_r>3)?_r:3));    
+        cylinder(szz, rb, rt, $fn=fn*((_r>3)?_r:3));            
 }//yCyl
 
-module yCyl2(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, rb=1, rt=1, szz=1, clr = "grey", fn = ($preview ? 2:8) ) {    
+module yCyl2(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, r=0, rb=1, rt=1, szz=1, clr = "grey", fn = ($preview ? 2:8) ) {    
+
+    rb = (r!=0)?r:rb;
+    rt = (r!=0)?r:rt;
     _r = (rb>rt)?rb:rt;
        
     mirror([mx,my,mz])
