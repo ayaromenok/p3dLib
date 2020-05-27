@@ -11,9 +11,9 @@
 //mx - Mirror X
 //szx - SiZe X
 module yVersion(){
-    echo("\n\n\t version: 0.1.1.20200211\n\n");
+    echo("\n\n\t version: 0.1.2.20200527\n\n");
 }
-module yCube(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, szx=1, szy=1, szz=1, clr = "grey") {
+module yCube(szx=1, szy=1, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey") {
     mirror([mx,my,mz])
     translate([px, py, pz])
     rotate([rx,ry,rz])
@@ -22,7 +22,7 @@ module yCube(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, m
         cube([szx, szy, szz], center=true);    
 }//yCube
 
-module ySphere(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, r=1, clr = "grey", fn = ($preview ? 4:8)) {
+module ySphere(r=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fn = ($preview ? 4:8)) {
     mirror([mx,my,mz])
     translate([px, py, pz])
     rotate([rx,ry,rz])
@@ -34,7 +34,7 @@ module ySphere(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0,
 //r - one radius
 //rb - Radius Bottom, 
 //rt - Radius Top
-module yCyl(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, r=0, rb=1, rt=1, szz=1, clr = "grey", fn = ($preview ? 2:8) ) {
+module yCyl(r=0, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, rb=1, rt=1, clr = "grey", fn = ($preview ? 2:8) ) {
     
     rb = (r!=0)?r:rb;
     rt = (r!=0)?r:rt;
@@ -49,7 +49,7 @@ module yCyl(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz
         cylinder(szz, rb, rt, $fn=fn*((_r>3)?_r:3));            
 }//yCyl
 
-module yCyl2(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, r=0, rb=1, rt=1, szz=1, clr = "grey", fn = ($preview ? 2:8) ) {    
+module yCyl2(r=0, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, rb=1, rt=1, clr = "grey", fn = ($preview ? 2:8) ) {    
 
     rb = (r!=0)?r:rb;
     rt = (r!=0)?r:rt;
@@ -64,7 +64,7 @@ module yCyl2(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, m
 }//yCyl2
 
 //p = [[x0,y0], [x1,y1], [x2,y2]]
-module yPoly(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, p=[[0,0],[10,0],[0,10]], szz=1, clr = "grey") {
+module yPoly(p=[[0,0],[10,0],[0,10]], px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, szz=1, clr = "grey") {
     mirror([mx,my,mz])
     translate([px, py, pz])
     rotate([rx,ry,rz])
