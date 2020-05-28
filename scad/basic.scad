@@ -64,7 +64,7 @@ module yCyl2(r=0, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, m
 }//yCyl2
 
 //p = [[x0,y0], [x1,y1], [x2,y2]]
-module yPoly(p=[[0,0],[10,0],[0,10]], px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, szz=1, clr = "grey") {
+module yPoly(p=[[0,0],[10,0],[0,10]], szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey") {
     mirror([mx,my,mz])
     translate([px, py, pz])
     rotate([rx,ry,rz])
