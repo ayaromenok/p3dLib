@@ -40,7 +40,7 @@ module yCyl(r=0, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx
     rt = (r!=0)?r:rt;
     _r = (rb>rt)?rb:rt;
     
-    echo (r,rb,rt);
+    //echo (r,rb,rt);
     mirror([mx,my,mz])
     translate([px, py, (pz-szz/2)])
     rotate([rx,ry,rz])
