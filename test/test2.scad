@@ -4,7 +4,8 @@ yVersion();
 
 testCyl();
 testSphere(py=2);
-
+testCube(py=4);
+testCylRotate(py=6);
 //yCyl(10.5,10,    10,5,0,     0,40,0, fn=8);
 
 //cylinder(10, 5,5, $fa=120,$fs=0.5, $fn=12);
@@ -29,7 +30,7 @@ module testCyl( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
         yCyl(1,1);
         yCyl(1,1,   px=2.1, $fn=3);
     }//transform
-}//module testSphere
+}//module testCyl
 
 module testSphere( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     translate([px, py, pz])
@@ -40,6 +41,28 @@ module testSphere( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
         ySphere(1, 2.1,0,0, $fn=5);
     }//transform
 }//module testSphere
+
+module testCube( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz]){
+        yCube(1,1,1,   px=-2.1);
+        yCube(1,1,1);
+        yCube(1,1,1,   px=2.1,pz=1,rx=30);
+    }//transform
+}//module testCube
+
+module testCylRotate( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz]){
+        yCyl(1,1,   px=-4.2, cnt=false);
+        yCyl(1,1,   px=-2.1,   rx=30 );
+        yCyl(1,1);
+        yCyl(1,1,   px=2.1,pz=1,    rx=30);
+        yCyl(1,1,   px=4.2,pz=1,    rx=30, cnt=false);
+    }//transform
+}//module testCylRotate
 
 //test modules
 module gun(){
