@@ -93,6 +93,7 @@ module testMink(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     scale([sx,sy,sz]){        
         yMinkCubeCyl(1.5,2,1,0.25, fs=0.1);        
         yMinkCubeSphere(1.5,1,1,0.25, px=2.1,fs=0.1); 
+        yMinkCylSphere(rb=0.5, rt=0.4,szz=1, rr=0.3, px=-2.1,fs=0.2);
     }//transform
 }//module testSector
 

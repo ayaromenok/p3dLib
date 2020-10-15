@@ -117,6 +117,12 @@ module yArc(r=1, a=[45,-30], w=0.5, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, s
 }
 
 module yMinkCubeCyl(szx=3, szy=3, szz=3, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
+    if (r*2>szx){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object X size itself", r*2, szx);
+        }
+    if (r*2>szy){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y size itself", r*2, szy);
+        }        
     mirror([mx,my,mz])
     translate([px, py, pz])
     rotate([rx,ry,rz])
@@ -128,8 +134,16 @@ module yMinkCubeCyl(szx=3, szy=3, szz=3, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0,
         }
 }//yMinkCubeCyl
 
-yMinkCubeSphere();
 module yMinkCubeSphere(szx=3, szy=3, szz=3, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
+    if (r*2>szx){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object X size itself", r*2, szx);
+        }
+    if (r*2>szy){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y size itself", r*2, szy);
+        }    
+    if (r*2>szz){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Z size itself", r*2, szz);
+        }                
     mirror([mx,my,mz])
     translate([px, py, pz])
     rotate([rx,ry,rz])
@@ -139,4 +153,37 @@ module yMinkCubeSphere(szx=3, szy=3, szz=3, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz
             cube([szx-2*r, szy-2*r, szz-2*r], center=true);    
             ySphere(r, fa=fa, fs=fs, $fn=$fn);
         }
-}//yMinkCubeCyl
+}//yMinkCubeSphere
+
+module yMinkCylSphere(r=0, szz=1, rr=0.2, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, rb=1, rt=1, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0, cnt=true ) {
+    if (r>0){
+        if (rr>=r){
+            echo ("\t\t\t\tERROR:Fillet size bigger than object Radius itself", rr, r);
+        }        
+    }else {
+        if (rr>=rb){
+            echo ("\t\t\t\tERROR:Fillet size bigger than object Bottom Radius itself", rr, rb);
+        }
+        if (rr>=rt){
+            echo ("\t\t\t\tERROR:Fillet size bigger than object Top Radius itself", rr, rt);
+        }
+    }//r>0
+    if (2*rr>szz){
+        echo ("\t\t\t\tERROR:Fillet size bigger than object Z size itself", r, szz);
+    }
+    mirror([mx,my,mz])
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz])
+    color(clr)
+        minkowski(){
+            if (r>0){
+                yCyl(r=(r-rr), szz=(szz-2*rr), cnt=cnt, fa=fa, fs=fs, $fn=$fn);
+            }else{
+                yCyl(rb=(rb-rr), rt=(rt-rr), szz=(szz-2*rr), cnt=cnt, fa=fa, fs=fs, $fn=$fn);
+            }
+        ySphere(rr, fa=fa, fs=fs, $fn=$fn);
+        }    
+}//yMinkCylSphere
+
+
