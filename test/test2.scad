@@ -8,6 +8,7 @@ testCube(py=4);
 testCylRotate(py=6);
 testPoly(py=8);
 testSecArc(py=10);
+testMink(py=12);
 //yCyl(10.5,10,    10,5,0,     0,40,0, fn=8);
 
 //cylinder(10, 5,5, $fa=120,$fs=0.5, $fn=12);
@@ -83,6 +84,15 @@ module testSecArc(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
         ySec(1,   px=2.1, $fn=7);
         yArc(1,   px=-4.2, fs=0.1);
         yArc(1,   px=4.2, $fn=7);
+    }//transform
+}//module testSector
+
+module testMink(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz]){        
+        yMinkCubeCyl(1.5,2,1,0.25, fs=0.1);        
+        yMinkCubeSphere(1.5,1,1,0.25, px=2.1,fs=0.1); 
     }//transform
 }//module testSector
 

@@ -116,3 +116,27 @@ module yArc(r=1, a=[45,-30], w=0.5, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, s
         }//diff
 }
 
+module yMinkCubeCyl(szx=3, szy=3, szz=3, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
+    mirror([mx,my,mz])
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz])
+    color(clr)
+        minkowski(){
+            cube([szx-2*r, szy-2*r, szz-0.05], center=true);    
+            yCyl(r, szz=0.05, fa=fa, fs=fs, $fn=$fn);
+        }
+}//yMinkCubeCyl
+
+yMinkCubeSphere();
+module yMinkCubeSphere(szx=3, szy=3, szz=3, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
+    mirror([mx,my,mz])
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz])
+    color(clr)
+        minkowski(){
+            cube([szx-2*r, szy-2*r, szz-2*r], center=true);    
+            ySphere(r, fa=fa, fs=fs, $fn=$fn);
+        }
+}//yMinkCubeCyl
