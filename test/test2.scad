@@ -78,7 +78,7 @@ module testSecArc(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     translate([px, py, pz])
     rotate([rx,ry,rz])
     scale([sx,sy,sz]){
-         ySec(1,   px=-2.1, fs=0.1);
+        ySec(1,a=[30,-30],   px=-2.1, fs=0.1);
         ySec(1);
         ySec(1,   px=2.1, $fn=7);
         yArc(1,   px=-4.2, fs=0.1);

@@ -11,7 +11,7 @@
 //mx - Mirror X
 //szx - SiZe X
 module yVersion(){
-    echo("<<<<<\t\t\t version: 0.2.0.20201015 \t\t>>>>>");
+    echo("\t\t\t\tp3dLib: 0.2.0.20201015");
 }
 
 
@@ -74,6 +74,13 @@ module yPoly(p=[[0,0],[10,0],[0,10]], szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0,
 
 module ySec(r=1, a=[30,-30], szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
     //echo("angle",a, "r", r);
+    
+    if ((a[0]-a[1])>180){
+        echo ("\t\t\t\tERROR:Sum of Sec/Arc more than a 180 degree", (a[0]-a[1]), a);
+        }
+    if (a[0]==a[1]){
+        echo ("\t\t\t\tERROR:Angles start/end should be different", a);
+        }
     mirror([mx,my,mz])
     translate([px, py, pz])
     rotate([rx,ry,rz])
