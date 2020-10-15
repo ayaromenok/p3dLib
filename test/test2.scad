@@ -6,6 +6,8 @@ testCyl();
 testSphere(py=2);
 testCube(py=4);
 testCylRotate(py=6);
+testPoly(py=8);
+testSecArc(py=10);
 //yCyl(10.5,10,    10,5,0,     0,40,0, fn=8);
 
 //cylinder(10, 5,5, $fa=120,$fs=0.5, $fn=12);
@@ -22,7 +24,7 @@ testCylRotate(py=6);
 //longeron();
 //gun();
 
-module testCyl( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+module testCyl(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     translate([px, py, pz])
     rotate([rx,ry,rz])
     scale([sx,sy,sz]){
@@ -32,7 +34,7 @@ module testCyl( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     }//transform
 }//module testCyl
 
-module testSphere( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+module testSphere(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     translate([px, py, pz])
     rotate([rx,ry,rz])
     scale([sx,sy,sz]){
@@ -42,7 +44,7 @@ module testSphere( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     }//transform
 }//module testSphere
 
-module testCube( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+module testCube(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     translate([px, py, pz])
     rotate([rx,ry,rz])
     scale([sx,sy,sz]){
@@ -52,7 +54,7 @@ module testCube( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     }//transform
 }//module testCube
 
-module testCylRotate( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+module testCylRotate(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     translate([px, py, pz])
     rotate([rx,ry,rz])
     scale([sx,sy,sz]){
@@ -63,6 +65,26 @@ module testCylRotate( px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
         yCyl(1,1,   px=4.2,pz=1,    rx=30, cnt=false);
     }//transform
 }//module testCylRotate
+
+module testPoly(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz]){
+        yPoly(p=[[-1,0], [1,0], [0.5,1]]);
+    }//transform
+}//module testPoly
+
+module testSecArc(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz]){
+         ySec(1,   px=-2.1, fs=0.1);
+        ySec(1);
+        ySec(1,   px=2.1, $fn=7);
+        yArc(1,   px=-4.2, fs=0.1);
+        yArc(1,   px=4.2, $fn=7);
+    }//transform
+}//module testSector
 
 //test modules
 module gun(){
