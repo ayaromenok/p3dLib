@@ -1,2 +1,20 @@
 # p3dLib
-simplify lib (https://github.com/ayaromenok/p3dTest/issues/8) moved to separate repo to easy inlude it ot other projects
+
+## Goal
+
+Make OpenScad code more compact - include all translate/rotate/scale/mirror commands as parameters to basic primitives
+
+## Primitives
+
+ - yCube
+ - ySphere
+ - yCyl
+ - yPoly
+ - ySec
+ - yArc
+ - yMinkCubeCyl
+ - yMinkCubeSphere
+ - yMinkCylSphere
+
+## Original
+simplify lib (https://github.com/ayaromenok/p3dTest/issues/8) moved to this repo to easy inlude it to other projects
