@@ -1,7 +1,7 @@
 
 //yCube(szx=5, py=3, rz=30, mx=1, clr="red");
 //yCyl(px=7, py=5, rb=3, clr="green");
-//yPoly(p=[[-5,0],[5,0],[0,5]],szz=3);
+//yPoly(p=[[-5,0],[5,0],[0,5]], szz=3, sv=2, isCenter=true);
 //ySec(r=5);
 //yArc(r=15, px=5);
 
@@ -68,13 +68,14 @@ module yCyl(r=0, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx
 }//yCyl
 
 //p = [[x0,y0], [x1,y1], [x2,y2]]
-module yPoly(p=[[0,0],[10,0],[0,10]], szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey") {
+module yPoly(p=[[0,0],[10,0],[0,10]], szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", sv=1, isCenter=false) {
+    //sv - scale ve
     mirror([mx,my,mz])
     translate([px, py, pz])
     rotate([rx,ry,rz])
     scale([sx,sy,sz])
     color(clr)
-        linear_extrude(szz)
+        linear_extrude(szz, center=isCenter, scale=sv)
             polygon(p);
 }//yCube
 
