@@ -5,13 +5,19 @@
 //ySec(r=5);
 //yArc(r=15, px=5);
 
+//yMinkCubeCyl();
+//yMinkCubeSphere();
+//yMinkCylSphere();
+//yMinkTrapezoidCyl(szx=20,szyb=10,szyt=14,,szz=10);
+//yMinkTrapezoidSphere(szx=20,szyb=10,szyt=14,,szz=20);
+
 //px - Position X
 //rx - Rotation X
 //sx - Scale X
 //mx - Mirror X
 //szx - SiZe X
 module yVersion(){
-    echo("\t\t\t\tp3dLib: 0.2.0.20201015");
+    echo("\t\t\t\tp3dLib: 0.2.1.20210110");
 }
 
 
@@ -186,4 +192,55 @@ module yMinkCylSphere(r=0, szz=1, rr=0.2, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx
         }    
 }//yMinkCylSphere
 
+module yMinkTrapezoidCyl(szx=10, szyb=10,szyt=12, szz=5, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
+    if (r*2>szx){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object X size itself", r*2, szx);
+        }
+    if (r*2>szyb){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/bottom size itself", r*2, szyb);
+        }        
+    if (r*2>szyt){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/top size itself", r*2, szyt);
+        }
+    if (r*2>szz){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Z size itself", r*2, szz);
+        }                    
+    mirror([mx,my,mz])
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz])
+    color(clr)
+        rotate([90,0,90])
+        translate([0,0,(-szx/2+r)])        
+        minkowski(){
+            yPoly(p=[[(-szyb/2+r),(-szz/2+r)],[(szyb/2-r),(-szz/2+r)],[(szyt/2-r),(szz/2-r)],[(-szyt/2+r),(szz/2-r)]],szz=szx);
+            yCyl(r, szz=0.05, fa=fa, fs=fs, $fn=$fn);
+        }
+}//yMinkTrapezoidCyl
+
+module yMinkTrapezoidSphere(szx=10, szyb=10,szyt=12, szz=5, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
+    if (r*2>szx){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object X size itself", r*2, szx);
+        }
+    if (r*2>szyb){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/bottom size itself", r*2, szyb);
+        }        
+    if (r*2>szyt){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/top size itself", r*2, szyt);
+        }
+    if (r*2>szz){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Z size itself", r*2, szz);
+        }                    
+    mirror([mx,my,mz])
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz])
+    color(clr)
+        rotate([90,0,90])
+        translate([0,0,(-szx/2+r)])        
+        minkowski(){
+            yPoly(p=[[(-szyb/2+r),(-szz/2+r)],[(szyb/2-r),(-szz/2+r)],[(szyt/2-r),(szz/2-r)],[(-szyt/2+r),(szz/2-r)]],szz=szx-2*r);
+            ySphere(r, fa=fa, fs=fs, $fn=$fn);
+        }
+}//yMinkTrapezoidSphere
 
