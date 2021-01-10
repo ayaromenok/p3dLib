@@ -8,8 +8,8 @@
 //yMinkCubeCyl();
 //yMinkCubeSphere();
 //yMinkCylSphere();
-//yMinkTrapezoidCyl(szx=20,szyb=10,szyt=14,szz=10,szzs=1.3);
-//yMinkTrapezoidSphere(szx=20,szyb=10,szyt=14,szz=20, szzs=1.3);
+//yMinkTrapezoidCyl(szx=20,szybf=10,szytf=14,szybb=12,szytb=16,szz=10);
+//yMinkTrapezoidSphere(szx=20,szybf=10,szytf=14,szybb=12,szytb=16,szz=20);
 
 //px - Position X
 //rx - Rotation X
@@ -193,29 +193,35 @@ module yMinkCylSphere(r=0, szz=1, rr=0.2, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx
         }    
 }//yMinkCylSphere
 
-module yMinkTrapezoidCyl(szx=10, szyb=10,szyt=12, szz=5, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", szzs=1, fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
+module yMinkTrapezoidCyl(szx=10, szybf=10, szytf=12, szybb=12, szytb=14, szz=5, r=1,px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
     if (r*2>szx){
         echo ("\t\t\t\tERROR:Fillet size x2 bigger than object X size itself", r*2, szx);
         }
-    if (r*2>szyb){
-        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/bottom size itself", r*2, szyb);
+    if (r*2>szybf){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/bottom/front size itself", r*2, szybf);
         }        
-    if (r*2>szyt){
-        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/top size itself", r*2, szyt);
+    if (r*2>szytf){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/top/front size itself", r*2, szytf);
+        }
+    if (r*2>szybb){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/bottom/back size itself", r*2, szybb);
+        }        
+    if (r*2>szytb){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/top/back size itself", r*2, szytb);
         }
     if (r*2>szz){
         echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Z size itself", r*2, szz);
         }                    
         
     CubePoints = [
-        [-szx/2+r, -szyb/2+r, -szz/2 ],  //0
-        [ szx/2-r, -szyt/2+r, -szz/2  ],  //1
-        [ szx/2-r,  szyt/2-r, -szz/2  ],  //2
-        [-szx/2+r,  szyb/2-r, -szz/2  ],  //3
-        [-szx/2+r, -szyb/2*szzs+r,  szz/2  ],  //4
-        [ szx/2-r, -szyt/2*szzs+r,  szz/2 ],  //5
-        [ szx/2-r,  szyt/2*szzs-r,  szz/2 ],  //6
-        [-szx/2+r,  szyb/2*szzs-r,  szz/2 ]]; //7
+        [-szx/2+r, -szybb/2+r, -szz/2 ],  //0
+        [ szx/2-r, -szytb/2+r, -szz/2  ],  //1
+        [ szx/2-r,  szytb/2-r, -szz/2  ],  //2
+        [-szx/2+r,  szybb/2-r, -szz/2  ],  //3
+        [-szx/2+r, -szybf/2+r,  szz/2  ],  //4
+        [ szx/2-r, -szytf/2+r,  szz/2 ],  //5
+        [ szx/2-r,  szytf/2-r,  szz/2 ],  //6
+        [-szx/2+r,  szybf/2-r,  szz/2 ]]; //7
   
     CubeFaces = [
         [0,1,2,3],  // bottom
@@ -236,28 +242,35 @@ module yMinkTrapezoidCyl(szx=10, szyb=10,szyt=12, szz=5, r=1,px=0, py=0, pz=0, r
         }//mink
 }//yMinkTrapezoidCyl
 
-module yMinkTrapezoidSphere(szx=10, szyb=10, szyt=12, szz=5, r=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", szzs=1, fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
+module yMinkTrapezoidSphere(szx=10, szybf=10, szytf=12, szybb=10, szytb=12, szz=5, r=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey",fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0) {
     if (r*2>szx){
         echo ("\t\t\t\tERROR:Fillet size x2 bigger than object X size itself", r*2, szx);
         }
-    if (r*2>szyb){
-        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/bottom size itself", r*2, szyb);
+    if (r*2>szybf){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/bottom/front size itself", r*2, szybf);
         }        
-    if (r*2>szyt){
-        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/top size itself", r*2, szyt);
+    if (r*2>szytf){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/top/front size itself", r*2, szytf);
         }
+    if (r*2>szybb){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/bottom/back size itself", r*2, szybb);
+        }        
+    if (r*2>szytb){
+        echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Y/top/back size itself", r*2, szytb);
+        }
+    
     if (r*2>szz){
         echo ("\t\t\t\tERROR:Fillet size x2 bigger than object Z size itself", r*2, szz);
         }                    
     CubePoints = [
-        [-szx/2+r, -szyb/2+r, -szz/2+r],  //0
-        [ szx/2-r, -szyt/2+r, -szz/2+r],  //1
-        [ szx/2-r,  szyt/2-r, -szz/2+r],  //2
-        [-szx/2+r,  szyb/2-r, -szz/2+r],  //3
-        [-szx/2+r, -szyb/2*szzs+r,  szz/2-r],  //4
-        [ szx/2-r, -szyt/2*szzs+r,  szz/2-r],  //5
-        [ szx/2-r,  szyt/2*szzs-r,  szz/2-r],  //6
-        [-szx/2+r,  szyb/2*szzs-r,  szz/2-r]]; //7
+        [-szx/2+r, -szybb/2+r, -szz/2+r],  //0
+        [ szx/2-r, -szytb/2+r, -szz/2+r],  //1
+        [ szx/2-r,  szytb/2-r, -szz/2+r],  //2
+        [-szx/2+r,  szybb/2-r, -szz/2+r],  //3
+        [-szx/2+r, -szybf/2+r,  szz/2-r],  //4
+        [ szx/2-r, -szytf/2+r,  szz/2-r],  //5
+        [ szx/2-r,  szytf/2-r,  szz/2-r],  //6
+        [-szx/2+r,  szybf/2-r,  szz/2-r]]; //7
   
     CubeFaces = [
         [0,1,2,3],  // bottom
