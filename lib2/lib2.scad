@@ -10,14 +10,16 @@
 //yMinkCylSphere();
 //yMinkTrapezoidCyl(szx=20,szybf=10,szytf=14,szybb=12,szytb=16,szz=10);
 //yMinkTrapezoidSphere(szx=20,szybf=10,szytf=14,szybb=12,szytb=16,szz=20);
+//yTube(ro=5,ri=3,szz=7);
 
 //px - Position X
 //rx - Rotation X
 //sx - Scale X
 //mx - Mirror X
 //szx - SiZe X
+
 module yVersion(){
-    echo("\t\t\t\tp3dLib: 0.2.1.20210110");
+    echo("\t\t\t\tp3dLib: 0.2.1.20210117");
 }
 
 
@@ -291,3 +293,26 @@ module yMinkTrapezoidSphere(szx=10, szybf=10, szytf=12, szybb=10, szytb=12, szz=
         }//mink
 }//yMinkTrapezoidSphere
 
+
+module yTube(ro=2, ri=1, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0, cnt=true ) {    
+    
+    //echo ("cyl","fa", fa, "\t fs:", fs,"\t$fn", $fn);
+    mirror([mx,my,mz])
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz])
+    color(clr)        
+    if ($fn==0){  
+       difference(){
+           cylinder(szz, ro, ro,  $fa=fa, $fs=fs, center=cnt);            
+           translate([0,0,-0.1])
+                cylinder((szz+1), ri, ri,  $fa=fa, $fs=fs, center=cnt);
+       }//dif             
+    } else {        
+        difference(){
+            cylinder(szz, ro, ro, center=cnt);            
+            translate([0,0,-0.1])
+                cylinder((szz+1), ri, ri, center=cnt);
+        }//diff
+    }//$fn
+}//yTube

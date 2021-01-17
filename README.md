@@ -15,6 +15,9 @@ Make OpenScad code more compact - include all translate/rotate/scale/mirror comm
  - yMinkCubeCyl
  - yMinkCubeSphere
  - yMinkCylSphere
+ - yMinkTrapezoidCyl
+ - yMinkTrapezoidSphere
+ - yTube
 
 ## Original
 simplify lib (https://github.com/ayaromenok/p3dTest/issues/8) moved to this repo to easy inlude it to other projects
