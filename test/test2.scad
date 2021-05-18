@@ -9,6 +9,7 @@ testCylRotate(py=6);
 testPoly(py=8);
 testSecArc(py=10);
 testMink(py=12);
+testCone(py=14);
 //yCyl(10.5,10,    10,5,0,     0,40,0, fn=8);
 
 //cylinder(10, 5,5, $fa=120,$fs=0.5, $fn=12);
@@ -24,6 +25,7 @@ testMink(py=12);
 
 //longeron();
 //gun();
+
 
 module testCyl(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     translate([px, py, pz])
@@ -131,3 +133,13 @@ module longeron(){
     yCube(szx=2, szy=0.85, szz=3, px=35, pz=1.5);
     yCube(szx=2, szy=0.85, szz=3, px=50, pz=1.5);
 }//module longeron
+
+module testCone(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz]){
+        yCone(1,1,   px=-2.1, fs=0.1);
+        yCone(1,1);
+        yCone(1,1,   px=2.1, $fn=3);
+    }//transform
+}//module testCyl
