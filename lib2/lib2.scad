@@ -11,6 +11,7 @@
 //yMinkTrapezoidCyl(szx=20,szybf=10,szytf=14,szybb=12,szytb=16,szz=10);
 //yMinkTrapezoidSphere(szx=20,szybf=10,szytf=14,szybb=12,szytb=16,szz=20);
 //yTube(ro=5,ri=3,szz=7);
+//yCone(10,10);
 
 //px - Position X
 //rx - Rotation X
@@ -316,3 +317,19 @@ module yTube(ro=2, ri=1, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, 
         }//diff
     }//$fn
 }//yTube
+
+//r - radius
+module yCone(r=1, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey", fa=($preview ? 12:0.1), fs=($preview ? 2:0.4), $fn = 0, cnt=true ) {
+    
+    //echo ("cyl","fa", fa, "\t fs:", fs,"\t$fn", $fn);
+    mirror([mx,my,mz])
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz])
+    color(clr)    
+    if ($fn==0){        
+        cylinder(szz, r, 0,  $fa=fa, $fs=fs, center=cnt);            
+    } else {        
+        cylinder(szz, r, 0, center=cnt);            
+    }//$fn
+}//yCyl
