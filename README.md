@@ -5,8 +5,8 @@
 Make OpenScad code more compact - include all translate/rotate/scale/mirror commands as parameters to basic primitives
 
 ## Verison
- - 0.2.2.20210518
- - 
+ - 0.2.2.20210615
+ 
 ## Primitives
 
  - yCube
