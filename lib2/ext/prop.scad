@@ -1,4 +1,4 @@
-include <lib2.scad>
+include <../lib2.scad>
 
 //prop8040_3();
 //prop7040_3();

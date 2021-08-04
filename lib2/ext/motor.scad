@@ -1,4 +1,4 @@
-include <lib2.scad>
+include <../lib2.scad>
 
 //blMotor2212(isXSupport=true);
 //blMotor2212_botX(50,0,0);

@@ -1,4 +1,4 @@
-include <lib2.scad>
+include <../lib2.scad>
 
 //servoSg90();
 //SG90, weight 10.7gramm
