@@ -5,7 +5,7 @@
 Make OpenScad code more compact - include all translate/rotate/scale/mirror commands as parameters to basic primitives
 
 ## Verison
- - 0.2.2.20210615
+ - 0.2.2.20210804
  
 ## Primitives
 
@@ -25,5 +25,11 @@ Make OpenScad code more compact - include all translate/rotate/scale/mirror comm
 
 ![alt text](https://github.com/ayaromenok/p3dLib/blob/master/png/lib2_test.png?raw=true)
 
-## Original
-simplify lib (https://github.com/ayaromenok/p3dTest/issues/8) moved to this repo to easy inlude it to other projects
+## Extentions
+
+ - ext/motor 	- brushless motors
+ - ext/props 	- 2/3blade props
+ - ext/servo	-servos
+
+## Origins
+Simplify lib for OpenScad (https://github.com/ayaromenok/p3dTest/issues/8) was moved to this repo to easy include it to other projects
