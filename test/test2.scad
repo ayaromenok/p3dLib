@@ -10,6 +10,7 @@ testPoly(py=8);
 testSecArc(py=10);
 testMink(py=12);
 testCone(py=14);
+testText(py=16);
 //yCyl(10.5,10,    10,5,0,     0,40,0, fn=8);
 
 //cylinder(10, 5,5, $fa=120,$fs=0.5, $fn=12);
@@ -26,6 +27,15 @@ testCone(py=14);
 //longeron();
 //gun();
 
+module testText(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz]){
+        yText("Right",1, 1.5, 2,halign="left");
+        yText("Hello",1, 1.0, 0,halign="center");
+        yText("Left",1, 0.5,-2, halign="right");
+    }//transform
+}//module testText
 
 module testCyl(px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1){
     translate([px, py, pz])

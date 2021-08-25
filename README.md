@@ -5,7 +5,7 @@
 Make OpenScad code more compact - include all translate/rotate/scale/mirror commands as parameters to basic primitives
 
 ## Verison
- - 0.2.2.20210804
+ - 0.2.3.20210824
  
 ## Primitives
 
@@ -22,6 +22,7 @@ Make OpenScad code more compact - include all translate/rotate/scale/mirror comm
  - yMinkTrapezoidSphere
  - yTube
  - yCone
+ - yText
 
 ![alt text](https://github.com/ayaromenok/p3dLib/blob/master/png/lib2_test.png?raw=true)
 

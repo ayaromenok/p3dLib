@@ -12,7 +12,7 @@
 //yMinkTrapezoidSphere(szx=20,szybf=10,szytf=14,szybb=12,szytb=16,szz=20);
 //yTube(ro=5,ri=3,szz=7);
 //yCone(10,10);
-
+//yText("Hello", halign="center");
 //px - Position X
 //rx - Rotation X
 //sx - Scale X
@@ -20,8 +20,19 @@
 //szx - SiZe X
 
 module yVersion(){
-    echo("\t\t\t\tp3dLib: 0.2.2.20210804");
+    echo("\t\t\t\tp3dLib: 0.2.3.20210825");
 }
+
+module yText(string="text",size=10, depth=1, px=0,py=0,pz=0, rx=0,ry=0,rz=0, sx=1,sy=1,sz=1, mx=0,my=0,mz=0, clr = "grey", halign="left", valigh="baseline", font="Liberation Sans") {
+    mirror([mx,my,mz])
+    translate([px, py, pz])
+    rotate([rx,ry,rz])
+    scale([sx,sy,sz])
+    color(clr)
+    linear_extrude(depth)
+        //text(string,size,font,halign,vlighn);
+        text(string,size, font, halign=halign,valign=halign);
+}//yCube
 
 
 module yCube(szx=1, szy=1, szz=1, px=0, py=0, pz=0, rx=0, ry=0, rz=0, sx=1, sy=1, sz=1, mx=0, my=0, mz=0, clr = "grey") {
