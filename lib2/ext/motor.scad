@@ -8,7 +8,7 @@ include <../lib2.scad>
 //blMotor1104_top(-20,0,0);
 
 
-module blMotor2212_bot(px=0, py=0, pz=0, rx=0, ry=0, rz=0){
+module blMotor2212_bot(px=0,py=0,pz=0, rx=0,ry=0,rz=0){
     translate([(px), (py), pz])
     rotate([rx,ry,rz]){
         difference(){            
@@ -29,21 +29,19 @@ module blMotor2212_bot(px=0, py=0, pz=0, rx=0, ry=0, rz=0){
     }//transform
 }//module
 
-module blMotor2212_botX(px=0, py=0, pz=0, rx=0, ry=0, rz=0,){
+module blMotor2212_botX(px=0,py=0,pz=0, rx=0,ry=0,rz=0, height=4){
     translate([(px), (py), pz])
     rotate([rx,ry,rz]){
         {
             difference(){
-                yMinkCubeCyl(40,7.4,4,3.6,  0,0,-17);
-                
-                yCyl(1.7, 10,   33/2,0,-16);
-                yCyl(1.7, 10,   -33/2,0,-16);
+                yMinkCubeCyl(40,7.4,height,3.6,  0,0,-17);                
+                yCyl(1.7, height+6,   33/2,0,-16);
+                yCyl(1.7, height+6,   -33/2,0,-16);
             }//difference
             difference(){
-                yMinkCubeCyl(7.4,40,4,3.6,  0,0,-17);
-                
-                yCyl(1.7, 10,   0,33/2,-16);
-                yCyl(1.7, 10,   0,-33/2,-16);
+                yMinkCubeCyl(7.4,40,height,3.6,  0,0,-17);                
+                yCyl(1.7, height+6,   0,33/2,-16);
+                yCyl(1.7, height+6,   0,-33/2,-16);
             }
         }        
     }//transform
